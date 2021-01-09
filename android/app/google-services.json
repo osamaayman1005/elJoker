@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "81156361452",
+    "project_id": "el-joker-b535e",
+    "storage_bucket": "el-joker-b535e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81156361452:android:f51c366f0ba4736d1fe9c9",
+        "android_client_info": {
+          "package_name": "leora3y.co.el_joker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81156361452-6hqele2s60ndtupup7prqot9lkg03vov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0CX5ajo1jYN7DbXlX30Rn2VO7s73k2JA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81156361452-6hqele2s60ndtupup7prqot9lkg03vov.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
