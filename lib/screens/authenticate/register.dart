@@ -9,7 +9,7 @@ class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
 }
-
+//TODO user personal data such as name, age ...etc
 class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
 //the key for validation of the register form
