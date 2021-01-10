@@ -1,3 +1,4 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:el_joker/services/auth.dart';
 import 'package:el_joker/shared/constants.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
 }
+
 //TODO user personal data such as name, age ...etc
 class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
@@ -19,6 +21,9 @@ class _RegisterState extends State<Register> {
   String email = '';
   String password = '';
   String error = '';
+  String firstName = '';
+  String lastName = '';
+  DateTime dateOfBirth = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +36,14 @@ class _RegisterState extends State<Register> {
             onPressed: () {
               widget.toggleView();
             },
-            icon: Icon(Icons.person,color: Colors.indigo[100],),
-            label: Text('Sign in',style: TextStyle(color: Colors.indigo[100]),),
+            icon: Icon(
+              Icons.person,
+              color: Colors.indigo[100],
+            ),
+            label: Text(
+              'Sign in',
+              style: TextStyle(color: Colors.indigo[100]),
+            ),
           )
         ],
       ),
@@ -43,8 +54,43 @@ class _RegisterState extends State<Register> {
             key: _formKey,
             child: Column(
               children: [
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 150,
+                      child: TextFormField(
+                        decoration: TextInputDecoration.copyWith(
+                            hintText: 'First name'),
+                        validator: (val) =>
+                            val.isEmpty ? 'enter your first name' : null,
+                        onChanged: (val) {
+                          setState(() {
+                            firstName = val;
+                          });
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    SizedBox(
+                      width: 150,
+                      child: TextFormField(
+                        decoration:
+                            TextInputDecoration.copyWith(hintText: 'last name'),
+                        validator: (val) =>
+                            val.isEmpty ? 'enter your last name' : null,
+                        onChanged: (val) {
+                          setState(() {
+                            lastName = val;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 TextFormField(
                   decoration: TextInputDecoration.copyWith(hintText: 'Email'),
@@ -59,7 +105,8 @@ class _RegisterState extends State<Register> {
                   height: 20,
                 ),
                 TextFormField(
-                  decoration: TextInputDecoration.copyWith(hintText: 'Password'),
+                  decoration:
+                      TextInputDecoration.copyWith(hintText: 'Password'),
                   validator: (val) => val.length < 6
                       ? 'enter a password 6 or more characters'
                       : null,
@@ -82,31 +129,49 @@ class _RegisterState extends State<Register> {
                   obscureText: true,
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 20,
+                ),
+                DateTimePicker(
+                  decoration: TextInputDecoration,
+                  initialValue: '',
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2100),
+                  dateLabelText: 'Date of birth',
+                  onChanged: (val) {
+                    setState(() {
+                      dateOfBirth = DateTime.parse(val);
+                    });
+                  },
+                  validator: (val) {
+                    print(dateOfBirth.year);
+                    //TODO add date validator
+                    return null;
+                  },
+                  onSaved: (val) => print(val),
                 ),
                 SizedBox(
-height: 60,
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 60,
                   width: 320,
                   child: RaisedButton(
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
-                        dynamic result = await _auth.registerWithEmailAndPassword(
-                            email, password);
+                        dynamic result = await _auth
+                            .registerWithEmailAndPassword(email, password);
                         if (result == null) {
                           setState(() {
-                            error='please enter a valid email address';
+                            error = 'please enter a valid email address';
                           });
                         }
                       }
                     },
                     color: Colors.indigo,
-
-
                     child: Text(
                       'Register',
                       style: TextStyle(color: Colors.white),
                     ),
-
                   ),
                 ),
               ],
