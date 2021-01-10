@@ -47,6 +47,7 @@ class _RegisterState extends State<Register> {
           )
         ],
       ),
+      resizeToAvoidBottomPadding: false,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
