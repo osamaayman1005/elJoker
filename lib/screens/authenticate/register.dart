@@ -31,8 +31,8 @@ class _RegisterState extends State<Register> {
             onPressed: () {
               widget.toggleView();
             },
-            icon: Icon(Icons.person),
-            label: Text('Sign in'),
+            icon: Icon(Icons.person,color: Colors.indigo[100],),
+            label: Text('Sign in',style: TextStyle(color: Colors.indigo[100]),),
           )
         ],
       ),

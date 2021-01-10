@@ -32,8 +32,11 @@ class _SignInState extends State<SignIn> {
             onPressed: () {
               widget.toggleView();
             },
-            icon: Icon(Icons.person),
-            label: Text('Sign up'),
+            icon: Icon(Icons.person,color: Colors.indigo[100],),
+
+            label: Text('Sign up'
+            ,style: TextStyle(color: Colors.indigo[100]),
+            ),
           )
         ],
       ),
