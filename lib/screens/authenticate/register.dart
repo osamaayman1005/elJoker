@@ -23,7 +23,7 @@ class _RegisterState extends State<Register> {
   String error = '';
   String firstName = '';
   String lastName = '';
-  DateTime dateOfBirth = DateTime.now();
+  DateTime dateOfBirth = DateTime(2020);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,9 +133,9 @@ class _RegisterState extends State<Register> {
                 ),
                 DateTimePicker(
                   decoration: TextInputDecoration,
-                  initialValue: '',
-                  firstDate: DateTime(2000),
-                  lastDate: DateTime(2100),
+                  initialValue: '2020-05-10',
+                  firstDate: DateTime(1921),
+                  lastDate: DateTime(2021),
                   dateLabelText: 'Date of birth',
                   onChanged: (val) {
                     setState(() {
@@ -159,7 +159,7 @@ class _RegisterState extends State<Register> {
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         dynamic result = await _auth
-                            .registerWithEmailAndPassword(email, password);
+                            .registerWithEmailAndPassword(email, password,firstName,lastName,dateOfBirth);
                         if (result == null) {
                           setState(() {
                             error = 'please enter a valid email address';
