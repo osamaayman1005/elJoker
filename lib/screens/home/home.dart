@@ -55,7 +55,9 @@ class _HomeState extends State<Home> {
               child: RaisedButton(
                 child: Text('team'),
                 color: Colors.indigo,
-                onPressed: () {},
+                onPressed: () async{
+                  dynamic result =await Navigator.pushNamed(context, '/team');
+                },
               ),
             ),
           ],
