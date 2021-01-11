@@ -1,6 +1,7 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:el_joker/services/auth.dart';
 import 'package:el_joker/shared/constants.dart';
+import 'package:el_joker/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 // Register Widget
@@ -23,10 +24,13 @@ class _RegisterState extends State<Register> {
   String error = '';
   String firstName = '';
   String lastName = '';
+
+  //boolean to show loading widget
+  bool loading = false;
   DateTime dateOfBirth = DateTime(2020);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading?Loading():Scaffold(
       backgroundColor: Colors.indigo[100],
       appBar: AppBar(
         backgroundColor: Colors.indigo,
@@ -159,10 +163,14 @@ class _RegisterState extends State<Register> {
                   child: RaisedButton(
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
+                        setState(() {
+                          loading = true;
+                        });
                         dynamic result = await _auth
                             .registerWithEmailAndPassword(email, password,firstName,lastName,dateOfBirth);
                         if (result == null) {
                           setState(() {
+                            loading = false;
                             error = 'please enter a valid email address';
                           });
                         }

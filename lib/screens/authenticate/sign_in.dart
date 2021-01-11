@@ -20,6 +20,8 @@ class _SignInState extends State<SignIn> {
   String password = '';
   String error = '';
 
+  //boolean to show loading widget
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,10 +86,14 @@ class _SignInState extends State<SignIn> {
                   child: RaisedButton(
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
+                        setState(() {
+                          loading = true;
+                        });
                         dynamic result = await _auth.signInWithEmailAndPassword(
                             email, password);
                         if (result == null) {
                           setState(() {
+                            loading=false;
                             error='wrong email or password';
                           });
                         }
