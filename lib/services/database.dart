@@ -1,6 +1,8 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:el_joker/models/game.dart';
+import 'package:el_joker/models/user.dart';
 
 class DatabaseService {
 final String uid ;
@@ -31,6 +33,31 @@ Future updateUserData(String firstName,String lastName,DateTime dateOfBirth) asy
         }
     );
   }
+//using stream to retrieve data
+UserData _userDataFromSnapshot(DocumentSnapshot snapshot){
+return UserData(
+uid: uid,
+firstName:snapshot.data['firstName'],
+  lastName: snapshot.data['lastName'],
+  dateOfBirth: snapshot.data['dateOfBirth'],
+);
+}
+
+
+// get user doc stream
+  Stream <UserData> get userData {
+    return userCollection.document(uid).snapshots()
+        .map(_userDataFromSnapshot);
+  }
+  Game _gameFromSnapshot(DocumentSnapshot snapshot){
+  return Game(
+    creatorId: uid,
+    activity: snapshot.data['activity'],
+    currentPlayers: snapshot.data['currentPlayers'],
+    totalPlayers: snapshot.data['totalPlayers'],
+  );
+  }
+
 }
 
 
