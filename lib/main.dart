@@ -1,5 +1,6 @@
 import 'package:el_joker/screens/player/player.dart';
 import 'package:el_joker/screens/team/team.dart';
+import 'package:el_joker/screens/team/waiting.dart';
 import 'package:el_joker/screens/wrapper.dart';
 import 'package:el_joker/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
           '/': (context)=>Wrapper(),
           '/team':(context)=>Team(),
           '/player':(context)=>Player(),
+          '/waitingForPlayers':(context)=>WaitingForPlayers(),
         },
       ),
     );
