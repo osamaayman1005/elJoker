@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_joker/models/game.dart';
 import 'package:el_joker/models/user.dart';
+import 'package:geolocator/geolocator.dart';
 
 class DatabaseService {
 final String uid ;
@@ -22,16 +23,24 @@ Future updateUserData(String firstName,String lastName,DateTime dateOfBirth) asy
 }
 
 //update/create game data method
-  Future updateGameData(String activity,int totalPlayers,int currentPlayers) async {
+  Future updateGameData(String activity,int totalPlayers,int currentPlayers,longitude,latitude) async {
 //collection reference to game data
     final CollectionReference gameCollection = Firestore.instance.collection('Games');
+
     return await gameCollection.document(uid).setData(
         {
           'activity':activity,
           'totalPlayers':totalPlayers,
           'currentPlayers':currentPlayers,
+          'locationX':longitude,
+          'locationY':latitude
         }
     );
+  }
+  Future deleteGameData () async {
+    //collection reference to game data
+    final CollectionReference gameCollection = Firestore.instance.collection('Games');
+    return await gameCollection.document(uid).delete();
   }
 //using stream to retrieve data
 UserData _userDataFromSnapshot(DocumentSnapshot snapshot){
