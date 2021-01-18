@@ -1,3 +1,4 @@
+import 'package:el_joker/screens/player/game_location.dart';
 import 'package:el_joker/screens/player/player.dart';
 import 'package:el_joker/screens/team/team.dart';
 import 'package:el_joker/screens/team/waiting.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
           '/team':(context)=>Team(),
           '/player':(context)=>Player(),
           '/waitingForPlayers':(context)=>WaitingForPlayers(),
+          '/gameLocation':(context)=>GameLocation(),
         },
       ),
     );
