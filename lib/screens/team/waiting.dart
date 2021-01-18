@@ -19,6 +19,7 @@ class _WaitingForPlayersState extends State<WaitingForPlayers> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Game settings'),
+        backgroundColor: Colors.indigo,
 
       ),
       body: Center(

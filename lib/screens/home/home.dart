@@ -43,7 +43,9 @@ class _HomeState extends State<Home> {
               child: RaisedButton(
                 child: Text('joker'),
                 color: Colors.indigo,
-                onPressed: () {},
+                onPressed: () async{
+                  dynamic result =await Navigator.pushNamed(context, '/player');
+                },
               ),
             ),
             SizedBox(
