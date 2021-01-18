@@ -11,5 +11,6 @@ class Game {
   final String activity;
   final int totalPlayers;
   final int currentPlayers;
-  Game({this.creatorId,this.activity,this.totalPlayers,this.currentPlayers});
+  final double locationX,locationY;
+  Game({this.creatorId,this.activity,this.totalPlayers,this.currentPlayers,this.locationX,this.locationY});
 }
