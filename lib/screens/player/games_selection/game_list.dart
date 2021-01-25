@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:el_joker/models/game.dart';
 import 'package:el_joker/models/user.dart';
-import 'package:el_joker/screens/player/game_card.dart';
+import 'file:///E:/Projects/elJoker/lib/screens/player/games_selection/game_card.dart';
 
 import 'package:el_joker/shared/loading.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,6 @@
 //TODO implement player screen(s)
 import 'package:el_joker/models/game.dart';
-import 'package:el_joker/screens/player/game_list.dart';
+import 'file:///E:/Projects/elJoker/lib/screens/player/games_selection/game_list.dart';
 import 'package:el_joker/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
