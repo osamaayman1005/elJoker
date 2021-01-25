@@ -9,7 +9,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 
 class GameCard extends StatelessWidget {
-  final double distance;
+  final String distance;
   final Game game;
 
   GameCard({this.game,this.distance});
