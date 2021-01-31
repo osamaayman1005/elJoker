@@ -35,9 +35,9 @@ class GameCard extends StatelessWidget {
           subtitle: Text('${game.currentPlayers}/${game.totalPlayers} distance: ${distance}km'),
         onTap: (){
             if(game.currentPlayers<game.totalPlayers){
-            _database.updateGameData(game.activity, game.totalPlayers, game.currentPlayers+1, game.locationX, game.locationY);
+            _database.updateGameData(game.activity, game.totalPlayers, game.currentPlayers+1, game.longitude, game.latitude);
             print(game.creatorId);
-           Navigator.pushNamed(context, '/gameLocation');
+           Navigator.pushNamed(context, '/gameLocation',arguments: game);
 
             //todo handle max/max number of players
         }

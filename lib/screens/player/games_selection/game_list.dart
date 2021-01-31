@@ -10,23 +10,23 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:el_joker/services/database.dart';
-
+//todo sort activities
 class GameList extends StatefulWidget {
   @override
   _GameListState createState() => _GameListState();
 }
 
 class _GameListState extends State<GameList> {
-  double locationX;
-  double locationY;
+  double longitude;
+  double latitude;
   bool loading = true;
 
   Future getCurrentLocation() async {
     LocationPermission permission = await Geolocator.requestPermission();
     Position location = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-    locationX = location.longitude;
-    locationY = location.latitude;
+    longitude = location.longitude;
+    latitude = location.latitude;
     loading = false;
   }
 
@@ -44,10 +44,10 @@ class _GameListState extends State<GameList> {
                   itemCount: games.length,
                   itemBuilder: (context, index) {
                     double distance = Geolocator.distanceBetween(
-                        locationY,
-                        locationX,
-                        games[index].locationY,
-                        games[index].locationX);
+                        latitude,
+                        longitude,
+                        games[index].latitude,
+                        games[index].longitude);
                     print(distance);
                     distance /= 1000;
 

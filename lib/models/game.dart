@@ -11,6 +11,6 @@ class Game {
   final String activity;
   final int totalPlayers;
   final int currentPlayers;
-  final double locationX,locationY;
-  Game({this.creatorId,this.activity,this.totalPlayers,this.currentPlayers,this.locationX,this.locationY});
+  final double longitude,latitude;
+  Game({this.creatorId,this.activity,this.totalPlayers,this.currentPlayers,this.longitude,this.latitude});
 }

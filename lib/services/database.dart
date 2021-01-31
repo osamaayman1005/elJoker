@@ -38,8 +38,8 @@ class DatabaseService {
           'activity': activity,
           'totalPlayers': totalPlayers,
           'currentPlayers': currentPlayers,
-          'locationX': longitude,
-          'locationY': latitude
+          'longitude': longitude,
+          'latitude': latitude
         }
     );
   }
@@ -72,8 +72,8 @@ class DatabaseService {
       activity: doc.data['activity'],
       currentPlayers: doc.data['currentPlayers'],
       totalPlayers: doc.data['totalPlayers'],
-      locationX: doc.data['locationX'],
-      locationY: doc.data['locationY'],
+      longitude: doc.data['longitude'],
+      latitude: doc.data['latitude'],
     );}).toList();
   }
 
